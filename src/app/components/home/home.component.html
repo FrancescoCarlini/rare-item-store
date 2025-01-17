@@ -1,25 +1,29 @@
-<div class="row justify-content-center">
-  <div class="text-center">
-    <h3 *ngIf="utenteLoggato?.sesso === 'M'">
-      Benvenuto {{ utenteLoggato?.nome }}
-    </h3>
-    <h3 *ngIf="utenteLoggato?.sesso === 'F'">
-      Benvenuta {{ utenteLoggato?.nome }}
-    </h3>
-    <h4>Riepilogo dei tuoi dati</h4>
-    <p>Nome: {{ utenteLoggato?.nome }}</p>
-    <p>Cognome: {{ utenteLoggato?.cognome }}</p>
-    <p>Email: {{ utenteLoggato?.email }}</p>
-    <p>Sesso: {{ utenteLoggato?.sesso }}</p>
-  </div>
-  <div class="col-2 text-center">
-    <p-button
-      type="button"
-      label="Logout"
-      variant="text"
-      severity="danger"
-      (onClick)="logout()"
-      [rounded]="true"
-    />
+<div class="card">
+  <div class="card-body">
+    <div class="row justify-content-center">
+      <div class="text-center">
+        <h3 *ngIf="utenteLoggato?.sesso === 'M'">
+          Benvenuto {{ utenteLoggato?.nome }}
+        </h3>
+        <h3 *ngIf="utenteLoggato?.sesso === 'F'">
+          Benvenuta {{ utenteLoggato?.nome }}
+        </h3>
+        <h4>Riepilogo dei tuoi dati</h4>
+        <p>Nome: {{ utenteLoggato?.nome }}</p>
+        <p>Cognome: {{ utenteLoggato?.cognome }}</p>
+        <p>Email: {{ utenteLoggato?.email }}</p>
+        <p>Sesso: {{ utenteLoggato?.sesso }}</p>
+      </div>
+      <div class="col-2 text-center">
+        <p-button
+          type="button"
+          label="Logout"
+          variant="text"
+          severity="danger"
+          (onClick)="logout()"
+          [rounded]="true"
+        />
+      </div>
+    </div>
   </div>
 </div>
