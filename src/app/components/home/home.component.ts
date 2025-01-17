@@ -11,11 +11,19 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   utenteLoggato: UserModel;
+  isLogged: boolean;
 
   constructor(private router: Router) {
     this.utenteLoggato = JSON.parse(localStorage.getItem('user'));
-    if (!this.utenteLoggato) {
+    this.isLogged = JSON.parse(localStorage.getItem('logged')).isLogged;
+    if (!this.isLogged) {
       this.router.navigateByUrl('/login');
     }
+  }
+
+  logout() {
+    this.isLogged = false;
+    localStorage.removeItem('logged');
+    this.router.navigateByUrl('/login');
   }
 }

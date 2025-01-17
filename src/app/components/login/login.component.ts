@@ -12,13 +12,19 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   private router = inject(Router);
 
+  showErrorMessage = false;
+
   onSubmit(formValue) {
     const utente: UserModel = JSON.parse(localStorage.getItem('user'));
     if (
       utente.email === formValue.email &&
       utente.password === formValue.password
     ) {
+      this.showErrorMessage = false;
+      localStorage.setItem('logged', JSON.stringify({ isLogged: true }));
       this.router.navigateByUrl('/home');
+    } else {
+      this.showErrorMessage = true;
     }
   }
 }
