@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #eee;
+}
+
+.is-danger {
+  color: rgb(186, 0, 0);
+  font-size: small;
+  position: relative;
+}
