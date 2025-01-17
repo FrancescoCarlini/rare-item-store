@@ -65,9 +65,11 @@
         <div class="text-center">
           <p-button
             type="submit"
+            [ngClass]="formLogin.invalid ? 'not-allowed' : ''"
             label="Login"
             variant="text"
             [rounded]="true"
+            [disabled]="formLogin.invalid"
           />
         </div>
       </div>

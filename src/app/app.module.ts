@@ -8,6 +8,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabel } from 'primeng/floatlabel';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { HomeComponent } from './components/home/home.component';
     FloatLabel,
     PasswordModule,
     ButtonModule,
+    RadioButtonModule,
   ],
   providers: [
     provideAnimationsAsync(),

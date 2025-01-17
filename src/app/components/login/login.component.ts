@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { UserModel } from '../../shared/model/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +10,15 @@ import { Component } from '@angular/core';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+  private router = inject(Router);
+
   onSubmit(formValue) {
-    console.log(formValue);
+    const utente: UserModel = JSON.parse(localStorage.getItem('user'));
+    if (
+      utente.email === formValue.email &&
+      utente.password === formValue.password
+    ) {
+      this.router.navigateByUrl('/home');
+    }
   }
 }

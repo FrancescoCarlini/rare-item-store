@@ -1,1 +1,190 @@
-<p>registrazione works!</p>
+<div class="card flex mt-3 mb-3">
+  <div class="card-body">
+    <div class="row mt-3">
+      <h3 class="text-center">Registrati</h3>
+    </div>
+    <form [formGroup]="formRegistrazione" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-12 offset-lg-4 mb-3">
+          <p-floatlabel variant="on">
+            <input type="text" pInputText name="nome" formControlName="nome" />
+            <label for="nome">Nome</label>
+          </p-floatlabel>
+          <p
+            class="is-danger"
+            *ngIf="
+              formRegistrazione.controls.nome.hasError('required') &&
+              formRegistrazione.get('nome').touched
+            "
+          >
+            Il nome è obbligatorio
+          </p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <p-floatlabel variant="on">
+            <input
+              type="text"
+              pInputText
+              name="cognome"
+              formControlName="cognome"
+            />
+            <label for="cognome">Cognome</label>
+          </p-floatlabel>
+          <p
+            class="is-danger"
+            *ngIf="
+              formRegistrazione.controls.cognome.hasError('required') &&
+              formRegistrazione.get('cognome').touched
+            "
+          >
+            Il cognome è obbligatorio
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2 offset-lg-5 mb-3">
+          <p-floatlabel variant="on">
+            <input
+              pInputText
+              name="email"
+              pSize="large"
+              formControlName="email"
+              ngModel
+            />
+            <label for="email">Email</label>
+          </p-floatlabel>
+          <p
+            class="is-danger"
+            *ngIf="
+              formRegistrazione.controls.email.hasError('required') &&
+              formRegistrazione.get('email').touched
+            "
+          >
+            Email obbligatoria
+          </p>
+          <p
+            class="is-danger"
+            *ngIf="
+              formRegistrazione.controls.email.hasError('email') &&
+              formRegistrazione.get('email').touched
+            "
+          >
+            Formato email non corretto
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-12 offset-lg-4 mb-3">
+          <p-floatlabel variant="on">
+            <p-password
+              name="password"
+              formControlName="password"
+              [toggleMask]="true"
+            />
+            <label for="password">Password</label>
+          </p-floatlabel>
+          <p
+            class="is-danger"
+            *ngIf="
+              formRegistrazione.controls.password.hasError('required') &&
+              formRegistrazione.get('password').touched
+            "
+          >
+            Password obbligatoria
+          </p>
+          <p
+            class="is-danger"
+            *ngIf="
+              formRegistrazione.controls.password.hasError('pattern') &&
+              formRegistrazione.get('password').touched
+            "
+          >
+            Il campo password deve contenere almeno un numero, una lettera
+            maiuscola, un carattere speciale e di min 6 caratteri e max 15
+            caratteri
+          </p>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12 mb-3">
+          <p-floatlabel variant="on">
+            <p-password
+              name="ripetiPassword"
+              formControlName="ripetiPassword"
+              [toggleMask]="true"
+              (ngModelChange)="checkPassword($event)"
+            />
+            <label for="ripetiPassword">Conferma Password</label>
+          </p-floatlabel>
+          <p
+            class="is-danger"
+            *ngIf="
+              formRegistrazione.controls.ripetiPassword.hasError('required') &&
+              formRegistrazione.get('ripetiPassword').touched
+            "
+          >
+            Password obbligatoria
+          </p>
+          <p
+            class="is-danger"
+            *ngIf="!equals && formRegistrazione.get('ripetiPassword')?.touched"
+          >
+            Le due password devono corrispondere
+          </p>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-2 col-md-2 col-sm-12 offset-lg-3 mb-3">
+          <p-radiobutton
+            name="sesso"
+            value="M"
+            inputId="M"
+            formControlName="sesso"
+          />
+          <label for="M">M</label>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12">
+          <p-radiobutton
+            name="sesso"
+            value="F"
+            inputId="F"
+            formControlName="sesso"
+          />
+          <label for="F">F</label>
+        </div>
+        <p
+          class="is-danger"
+          *ngIf="
+            formRegistrazione.controls.sesso.hasError('required') &&
+            formRegistrazione.get('sesso').touched
+          "
+        ></p>
+        <div class="col-lg-2 col-md-2 col-sm-12">
+          <input type="checkbox" name="accetto" formControlName="accetto" />
+          <label for="accetto" class="ml-2"
+            >Accetto i termini di servizio</label
+          >
+        </div>
+        <p
+          class="is-danger"
+          *ngIf="
+            formRegistrazione.controls.accetto.hasError('required') &&
+            formRegistrazione.get('accetto').touched
+          "
+        ></p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="text-center">
+          <p-button
+            type="submit"
+            [ngClass]="formRegistrazione.invalid ? 'not-allowed' : ''"
+            label="Login"
+            variant="text"
+            [rounded]="true"
+            [disabled]="formRegistrazione.invalid || !this.equals"
+          >
+            Conferma
+          </p-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

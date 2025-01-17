@@ -1,1 +1,17 @@
-<p>home works!</p>
+<div class="row">
+  <div class="text-center">
+    <h3 *ngIf="utenteLoggato?.sesso === 'M'">
+      Benvenuto {{ utenteLoggato?.nome }}
+    </h3>
+    <h3 *ngIf="utenteLoggato?.sesso === 'F'">
+      Benvenuta {{ utenteLoggato?.nome }}
+    </h3>
+    <h4>Riepilogo dei tuoi dati</h4>
+    <ul>
+      <li>Nome: {{ utenteLoggato?.nome }}</li>
+      <li>Cognome: {{ utenteLoggato?.cognome }}</li>
+      <li>Email: {{ utenteLoggato?.email }}</li>
+      <li>Sesso: {{ utenteLoggato?.sesso }}</li>
+    </ul>
+  </div>
+</div>
